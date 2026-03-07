@@ -5,17 +5,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meow Coffee | Кофейня с душой</title>
+    <meta name="description" content="Meow Coffee — уютная вечерняя кофейня с авторскими напитками и десертами. Спешелти кофе, тёплая атмосфера и потрясающий интерьер.">
+    <meta name="keywords" content="кофейня, кофе, спешелти, Meow Coffee, авторские напитки, десерты, бронирование">
+    <!-- Open Graph -->
+    <meta property="og:title" content="Meow Coffee | Кофейня с душой">
+    <meta property="og:description" content="Уютная вечерняя кофейня с авторскими напитками и потрясающей атмосферой тёмного дерева.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="img/gallery_interior_1.png">
+    <!-- Favicon (SVG emoji) -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☕</text></svg>">
+    <link rel="preconnect" href="https://images.unsplash.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
         rel="stylesheet">
     <!-- Иконки Feather -->
-    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://unpkg.com/feather-icons" defer></script>
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
+    <a href="#about" class="skip-link">Перейти к содержимому</a>
+
+    <!-- Прелоадер -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-content">
+            <div class="preloader-logo">Meow<span>Coffee</span></div>
+            <div class="preloader-line">
+                <div class="preloader-line-fill"></div>
+            </div>
+        </div>
+    </div>
 
     <!-- Кастомный курсор -->
     <div class="cursor-dot" id="cursor-dot"></div>
@@ -33,9 +54,9 @@
                 <a href="#contacts" data-i18n="nav.contacts">Контакты</a>
             </div>
             <div class="nav-actions">
-                <button class="lang-switch" id="lang-switch-btn" aria-label="Сменить язык">EN</button>
+                <button type="button" class="lang-switch" id="lang-switch-btn" aria-label="Сменить язык">EN</button>
                 <a href="#booking" class="btn btn-primary d-none-mobile" data-i18n="nav.book">Забронировать</a>
-                <button class="mobile-menu-btn" aria-label="Меню"><i data-feather="menu"></i></button>
+                <button type="button" class="mobile-menu-btn" aria-label="Меню"><i data-feather="menu"></i></button>
             </div>
         </div>
         <!-- Мобильное выпадающее меню -->
@@ -63,7 +84,7 @@
             </div>
         </div>
         <div class="scroll-indicator fade-in delay-3">
-            <a href="#about"><i data-feather="chevron-down"></i></a>
+            <a href="#about" aria-label="Прокрутить вниз"><i data-feather="chevron-down"></i></a>
         </div>
     </header>
 
@@ -106,23 +127,71 @@
                     спокойствие после долгого дня. Мы варим спешелти кофе в приглушенном свете лампочек Эдисона.</p>
                 <div class="stats">
                     <div class="stat-item">
-                        <span class="stat-number" data-target="5">0</span><span class="stat-number">+</span>
-                        <span class="stat-label" data-i18n="about.stat1">Сортов зерна</span>
+                        <span class="stat-number" data-target="1200">0</span><span class="stat-number">+</span>
+                        <span class="stat-label" data-i18n="about.stat1">Чашек в день</span>
                     </div>
                     <div class="stat-item">
                         <span class="stat-number" data-target="12">0</span>
                         <span class="stat-label" data-i18n="about.stat2">Авторских напитков</span>
                     </div>
                     <div class="stat-item">
+                        <span class="stat-number" data-target="98">0</span><span class="stat-number">%</span>
+                        <span class="stat-label" data-i18n="about.stat3">Довольных гостей</span>
+                    </div>
+                    <div class="stat-item">
                         <span class="stat-number" data-target="4">0</span>
-                        <span class="stat-label" data-i18n="about.stat3">Года с вами</span>
+                        <span class="stat-label" data-i18n="about.stat4">Года с вами</span>
                     </div>
                 </div>
             </div>
             <div class="about-image scroll-animate">
                 <div class="img-wrapper glass-panel">
-                    <img src="все фотографии которые используются для сайта/about_brewing.png"
-                        alt="Процесс заваривания">
+                    <img src="img/about_brewing.png"
+                        alt="Процесс заваривания" loading="lazy" width="640" height="640">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Процесс приготовления -->
+    <section id="process" class="process-section">
+        <div class="container">
+            <h2 class="section-title text-center scroll-animate" data-i18n="process.title">Как рождается ваш кофе</h2>
+            <div class="process-grid scroll-animate">
+                <div class="process-step">
+                    <div class="process-icon">
+                        <i data-feather="globe"></i>
+                    </div>
+                    <div class="process-number">01</div>
+                    <h3 data-i18n="process.step1Title">Отбор зерна</h3>
+                    <p data-i18n="process.step1Text">Находим лучшие фермы Эфиопии, Колумбии и Бразилии. Только спешелти класса 85+.</p>
+                </div>
+                <div class="process-connector"><i data-feather="arrow-right"></i></div>
+                <div class="process-step">
+                    <div class="process-icon">
+                        <i data-feather="thermometer"></i>
+                    </div>
+                    <div class="process-number">02</div>
+                    <h3 data-i18n="process.step2Title">Обжарка</h3>
+                    <p data-i18n="process.step2Text">Обжариваем малыми партиями каждую неделю, чтобы зерно всегда было свежим.</p>
+                </div>
+                <div class="process-connector"><i data-feather="arrow-right"></i></div>
+                <div class="process-step">
+                    <div class="process-icon">
+                        <i data-feather="settings"></i>
+                    </div>
+                    <div class="process-number">03</div>
+                    <h3 data-i18n="process.step3Title">Помол</h3>
+                    <p data-i18n="process.step3Text">Молем зерно прямо перед приготовлением. Калибруем помол под каждый напиток.</p>
+                </div>
+                <div class="process-connector"><i data-feather="arrow-right"></i></div>
+                <div class="process-step">
+                    <div class="process-icon">
+                        <i data-feather="coffee"></i>
+                    </div>
+                    <div class="process-number">04</div>
+                    <h3 data-i18n="process.step4Title">Подача</h3>
+                    <p data-i18n="process.step4Text">Идеальная температура, латте-арт и подача с улыбкой. Ваш кофе готов.</p>
                 </div>
             </div>
         </div>
@@ -133,13 +202,47 @@
         <div class="container" id="order">
             <h2 class="section-title text-center scroll-animate" data-i18n="menu.title">Меню</h2>
             <div class="menu-filters scroll-animate">
-                <button class="filter-btn active" data-filter="all" data-i18n="menu.filterAll">Всё</button>
-                <button class="filter-btn" data-filter="coffee" data-i18n="menu.filterCoffee">Кофе</button>
-                <button class="filter-btn" data-filter="author" data-i18n="menu.filterAuthor">Авторские</button>
-                <button class="filter-btn" data-filter="dessert" data-i18n="menu.filterDessert">Десерты</button>
+                <button type="button" class="filter-btn active" data-filter="all" data-i18n="menu.filterAll">Всё</button>
+                <button type="button" class="filter-btn" data-filter="coffee" data-i18n="menu.filterCoffee">Кофе</button>
+                <button type="button" class="filter-btn" data-filter="author" data-i18n="menu.filterAuthor">Авторские</button>
+                <button type="button" class="filter-btn" data-filter="dessert" data-i18n="menu.filterDessert">Десерты</button>
             </div>
             <div class="menu-grid scroll-animate" id="menu-grid-container">
                 <!-- Карточки товаров будут добавлены через JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Наша команда -->
+    <section id="team" class="team-section">
+        <div class="container">
+            <h2 class="section-title text-center scroll-animate" data-i18n="team.title">Наша команда</h2>
+            <p class="team-subtitle text-center scroll-animate" data-i18n="team.subtitle">Люди, которые создают магию в каждой чашке</p>
+            <div class="team-grid scroll-animate">
+                <div class="team-card glass-panel">
+                    <div class="team-photo">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=400&h=400&fit=crop" alt="Алексей" loading="lazy">
+                    </div>
+                    <h3 class="team-name" data-i18n="team.name1">Алексей</h3>
+                    <span class="team-role" data-i18n="team.role1">Шеф-бариста</span>
+                    <p class="team-desc" data-i18n="team.desc1">8 лет опыта. Чемпион города по латте-арту 2024.</p>
+                </div>
+                <div class="team-card glass-panel">
+                    <div class="team-photo">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=400&h=400&fit=crop" alt="Мария" loading="lazy">
+                    </div>
+                    <h3 class="team-name" data-i18n="team.name2">Мария</h3>
+                    <span class="team-role" data-i18n="team.role2">Бариста & Кондитер</span>
+                    <p class="team-desc" data-i18n="team.desc2">Создатель всех авторских десертов. Обожает фонданы.</p>
+                </div>
+                <div class="team-card glass-panel">
+                    <div class="team-photo">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=400&h=400&fit=crop" alt="Дмитрий" loading="lazy">
+                    </div>
+                    <h3 class="team-name" data-i18n="team.name3">Дмитрий</h3>
+                    <span class="team-role" data-i18n="team.role3">Ростер & Q-грейдер</span>
+                    <p class="team-desc" data-i18n="team.desc3">Отвечает за обжарку и подбор лучших сортов зерна.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -150,20 +253,19 @@
             <h2 class="section-title text-center scroll-animate" data-i18n="gallery.title">Атмосфера</h2>
             <div class="gallery-grid scroll-animate">
                 <div class="gallery-item"><img
-                        src="https://images.unsplash.com/photo-1525610553991-2bede1a236e2?q=80&w=600" alt="Интерьер">
+                        src="img/gallery_interior_1.png" alt="Интерьер 1" loading="lazy" width="640" height="640">
                 </div>
                 <div class="gallery-item"><img
-                        src="все фотографии которые используются для сайта/gallery_interior_1.png" alt="Интерьер 1">
+                        src="img/gallery_interior_2.png" alt="Интерьер 2" loading="lazy" width="640" height="640">
                 </div>
-                <div class="gallery-item"><img src="все фотографии которые используются для сайта/gallery_latte_art.png"
-                        alt="Латте арт"></div>
-                <div class="gallery-item"><img src="все фотографии которые используются для сайта/gallery_beans.png"
-                        alt="Зёрна"></div>
-                <div class="gallery-item"><img
-                        src="все фотографии которые используются для сайта/gallery_interior_2.png" alt="Интерьер 2">
-                </div>
-                <div class="gallery-item"><img src="все фотографии которые используются для сайта/gallery_dessert.png"
-                        alt="Десерт"></div>
+                <div class="gallery-item"><img src="img/gallery_latte_art.png"
+                        alt="Латте арт" loading="lazy" width="640" height="640"></div>
+                <div class="gallery-item"><img src="img/gallery_beans.png"
+                        alt="Зёрна" loading="lazy" width="640" height="640"></div>
+                <div class="gallery-item"><img src="img/gallery_dessert.png"
+                        alt="Десерт" loading="lazy" width="640" height="640"></div>
+                <div class="gallery-item"><img src="img/about_brewing.png"
+                        alt="Заваривание" loading="lazy" width="640" height="640"></div>
             </div>
         </div>
     </section>
@@ -204,8 +306,8 @@
                     <p class="review-author">— Елена М.</p>
                 </div>
                 <div class="carousel-controls">
-                    <button class="carousel-btn" id="prev-review"><i data-feather="arrow-left"></i></button>
-                    <button class="carousel-btn" id="next-review"><i data-feather="arrow-right"></i></button>
+                    <button type="button" class="carousel-btn" id="prev-review" aria-label="Предыдущий отзыв"><i data-feather="arrow-left"></i></button>
+                    <button type="button" class="carousel-btn" id="next-review" aria-label="Следующий отзыв"><i data-feather="arrow-right"></i></button>
                 </div>
             </div>
         </div>
@@ -215,22 +317,49 @@
     <section id="booking" class="booking">
         <div class="container section-grid">
             <div class="booking-image scroll-animate">
-                <img src="все фотографии которые используются для сайта/booking_table.png" alt="Уютный столик">
+                <img src="img/booking_table.png" alt="Уютный столик" loading="lazy" width="640" height="640">
             </div>
             <div class="booking-form-wrapper glass-panel scroll-animate">
                 <h2 class="section-title" data-i18n="booking.title">Оставить заявку</h2>
                 <form id="booking-form" class="form">
                     <div class="form-group">
                         <label for="name" data-i18n="booking.name">ФИО</label>
-                        <input type="text" id="name" required placeholder="Иванов Иван Иванович"
+                        <input type="text" id="name" name="name" required placeholder="Иванов Иван Иванович"
                             data-i18n-placeholder="booking.nameHolder">
+                        <span class="form-error" data-i18n="booking.errorName">Введите ваше имя</span>
                     </div>
                     <div class="form-group">
                         <label for="phone" data-i18n="booking.phone">Номер телефона</label>
-                        <input type="tel" id="phone" required placeholder="+7 (999) 000-00-00">
+                        <input type="tel" id="phone" name="phone" required placeholder="+7 (999) 000-00-00">
+                        <span class="form-error" data-i18n="booking.errorPhone">Введите корректный номер</span>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="booking-date" data-i18n="booking.date">Дата</label>
+                            <input type="date" id="booking-date" name="date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="booking-time" data-i18n="booking.time">Время</label>
+                            <input type="time" id="booking-time" name="time" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="booking-guests" data-i18n="booking.guests">Количество гостей</label>
+                        <select id="booking-guests" name="guests" required>
+                            <option value="1">1</option>
+                            <option value="2" selected>2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6+">6+</option>
+                        </select>
                     </div>
                     <button type="submit" class="btn btn-primary w-100" data-i18n="booking.submit">Оставить
                         заявку</button>
+                    <div class="form-success" id="form-success">
+                        <i data-feather="check-circle"></i>
+                        <p data-i18n="booking.success">С вами свяжутся в течение часа. Ожидайте звонка.</p>
+                    </div>
                 </form>
             </div>
         </div>
@@ -301,9 +430,14 @@
 
     <!-- Модальное окно просмотра изображений -->
     <div class="modal-overlay image-lightbox" id="image-lightbox">
-        <button class="close-lightbox" id="close-lightbox"><i data-feather="x"></i></button>
-        <img src="" alt="Full size" id="lightbox-img">
+        <button type="button" class="close-lightbox" id="close-lightbox" aria-label="Закрыть"><i data-feather="x"></i></button>
+        <img src="" alt="" id="lightbox-img">
     </div>
+
+    <!-- Плавающая кнопка Позвонить (мобильная) -->
+    <a href="tel:+79991234567" class="float-btn float-phone" aria-label="Позвонить">
+        <i data-feather="phone"></i>
+    </a>
 
     <!-- Плавающая кнопка Telegram -->
     <a href="https://t.me/meowcoffee" class="float-btn float-telegram" target="_blank" aria-label="Telegram">
@@ -311,17 +445,11 @@
     </a>
 
     <!-- Кнопка Наверх -->
-    <button class="back-to-top" id="back-to-top" aria-label="Наверх">
+    <button type="button" class="back-to-top" id="back-to-top" aria-label="Наверх">
         <i data-feather="arrow-up"></i>
     </button>
 
-    <!-- Toast-уведомление -->
-    <div class="toast-container" id="toast-container"></div>
-
     <!-- Скрипты -->
-    <script>
-        feather.replace(); // Инициализация иконок
-    </script>
     <script src="script.js"></script>
 </body>
 

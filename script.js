@@ -19,19 +19,36 @@ const translations = {
         about: {
             title: "О нашей кофейне",
             text: "Meow Coffee — это не просто место, где наливают кофе. Это вечернее убежище для тех, кто ищет спокойствие после долгого дня. Мы варим спешелти кофе в приглушенном свете лампочек Эдисона.",
-            stat1: "Сортов зерна", stat2: "Авторских напитков", stat3: "Года с вами"
+            stat1: "Чашек в день", stat2: "Авторских напитков", stat3: "Довольных гостей", stat4: "Года с вами"
+        },
+        process: {
+            title: "Как рождается ваш кофе",
+            step1Title: "Отбор зерна", step1Text: "Находим лучшие фермы Эфиопии, Колумбии и Бразилии. Только спешелти класса 85+.",
+            step2Title: "Обжарка", step2Text: "Обжариваем малыми партиями каждую неделю, чтобы зерно всегда было свежим.",
+            step3Title: "Помол", step3Text: "Молем зерно прямо перед приготовлением. Калибруем помол под каждый напиток.",
+            step4Title: "Подача", step4Text: "Идеальная температура, латте-арт и подача с улыбкой. Ваш кофе готов."
         },
         menu: {
             title: "Меню", filterAll: "Всё", filterCoffee: "Кофе",
             filterAuthor: "Авторские", filterDessert: "Десерты"
+        },
+        team: {
+            title: "Наша команда",
+            subtitle: "Люди, которые создают магию в каждой чашке",
+            name1: "Алексей", role1: "Шеф-бариста", desc1: "8 лет опыта. Чемпион города по латте-арту 2024.",
+            name2: "Мария", role2: "Бариста & Кондитер", desc2: "Создатель всех авторских десертов. Обожает фонданы.",
+            name3: "Дмитрий", role3: "Ростер & Q-грейдер", desc3: "Отвечает за обжарку и подбор лучших сортов зерна."
         },
         gallery: { title: "Атмосфера" },
         reviews: { title: "Что говорят гости" },
         booking: {
             title: "Оставить заявку", name: "ФИО",
             nameHolder: "Иванов Иван Иванович", phone: "Номер телефона",
+            date: "Дата", time: "Время", guests: "Количество гостей",
             submit: "Оставить заявку",
-            success: "✓ С вами свяжутся в течение часа. Ожидайте звонка."
+            errorName: "Введите ваше имя",
+            errorPhone: "Введите корректный номер",
+            success: "С вами свяжутся в течение часа. Ожидайте звонка."
         },
         contacts: {
             title: "Ждём вас в гости", addressTitle: "Адрес",
@@ -81,19 +98,36 @@ const translations = {
         about: {
             title: "About Our Cafe",
             text: "Meow Coffee is more than just a place to get coffee. It's an evening refuge for those seeking peace after a long day. We brew specialty coffee under the dim light of Edison bulbs.",
-            stat1: "Coffee Bean Varieties", stat2: "Signature Drinks", stat3: "Years With You"
+            stat1: "Cups Per Day", stat2: "Signature Drinks", stat3: "Happy Guests", stat4: "Years With You"
+        },
+        process: {
+            title: "How Your Coffee Is Born",
+            step1Title: "Bean Selection", step1Text: "We find the best farms in Ethiopia, Colombia, and Brazil. Only 85+ specialty grade.",
+            step2Title: "Roasting", step2Text: "We roast in small batches every week to keep the beans always fresh.",
+            step3Title: "Grinding", step3Text: "We grind beans right before brewing. Calibrating the grind for each drink.",
+            step4Title: "Serving", step4Text: "Perfect temperature, latte art, and served with a smile. Your coffee is ready."
         },
         menu: {
             title: "Menu", filterAll: "All", filterCoffee: "Coffee",
             filterAuthor: "Signature", filterDessert: "Desserts"
+        },
+        team: {
+            title: "Our Team",
+            subtitle: "The people who create magic in every cup",
+            name1: "Alexey", role1: "Head Barista", desc1: "8 years of experience. City latte art champion 2024.",
+            name2: "Maria", role2: "Barista & Pastry Chef", desc2: "Creator of all signature desserts. Loves fondants.",
+            name3: "Dmitry", role3: "Roaster & Q-grader", desc3: "In charge of roasting and selecting the best beans."
         },
         gallery: { title: "Atmosphere" },
         reviews: { title: "Guest Reviews" },
         booking: {
             title: "Leave a Request", name: "Full Name",
             nameHolder: "John Doe", phone: "Phone Number",
+            date: "Date", time: "Time", guests: "Number of Guests",
             submit: "Send Request",
-            success: "✓ We will contact you within an hour. Expect a call."
+            errorName: "Please enter your name",
+            errorPhone: "Please enter a valid number",
+            success: "We will contact you within an hour. Expect a call."
         },
         contacts: {
             title: "Come Visit Us", addressTitle: "Address",
@@ -126,23 +160,24 @@ const translations = {
     }
 };
 
-let currentLang = localStorage.getItem('siteLang') || 'ru';
+let currentLang;
+try { currentLang = localStorage.getItem('siteLang') || 'ru'; } catch(e) { currentLang = 'ru'; }
 
 // Данные меню
 const menuItems = [
-    { id: 1, title: 'Эспрессо', category: 'coffee', price: 150, img: 'все фотографии которые используются для сайта/menu_espresso.png' },
-    { id: 2, title: 'Американо', category: 'coffee', price: 170, img: 'все фотографии которые используются для сайта/menu_americano.png' },
-    { id: 3, title: 'Капучино', category: 'coffee', price: 220, img: 'все фотографии которые используются для сайта/menu_cappuccino.png' },
-    { id: 4, title: 'Флэт Уайт', category: 'coffee', price: 240, img: 'все фотографии которые используются для сайта/флэт.png' },
-    { id: 5, title: 'Хвойный Раф', category: 'author', price: 320, img: 'все фотографии которые используются для сайта/menu_pine_raf.png' },
-    { id: 6, title: 'Пряная Вишня', category: 'author', price: 290, img: 'все фотографии которые используются для сайта/menu_spiced_cherry.png' },
-    { id: 7, title: 'Крем-Брюле Латте', category: 'author', price: 340, img: 'все фотографии которые используются для сайта/menu_creme_brulee_latte.png' },
-    { id: 8, title: 'Нью-Йорк Чизкейк', category: 'dessert', price: 350, img: 'все фотографии которые используются для сайта/menu_cheesecake.png' },
-    { id: 9, title: 'Шоколадный Фондан', category: 'dessert', price: 380, img: 'все фотографии которые используются для сайта/menu_fondant.png' },
-    { id: 10, title: 'Тирамису', category: 'dessert', price: 320, img: 'все фотографии которые используются для сайта/тирамису.png' },
-    { id: 11, title: 'Сет Макарун', category: 'dessert', price: 1550, img: 'все фотографии которые используются для сайта/макар.png' },
-    { id: 12, title: 'Круассан', category: 'dessert', price: 190, img: 'все фотографии которые используются для сайта/круассан.png' },
-    { id: 13, title: 'Брауни', category: 'dessert', price: 260, img: 'все фотографии которые используются для сайта/брауни.png' }
+    { id: 1, title: 'Эспрессо', category: 'coffee', price: 150, img: 'img/menu_espresso.png' },
+    { id: 2, title: 'Американо', category: 'coffee', price: 170, img: 'img/menu_americano.png' },
+    { id: 3, title: 'Капучино', category: 'coffee', price: 220, img: 'img/menu_cappuccino.png' },
+    { id: 4, title: 'Флэт Уайт', category: 'coffee', price: 240, img: 'img/flat_white.png' },
+    { id: 5, title: 'Хвойный Раф', category: 'author', price: 320, img: 'img/menu_pine_raf.png' },
+    { id: 6, title: 'Пряная Вишня', category: 'author', price: 290, img: 'img/menu_spiced_cherry.png' },
+    { id: 7, title: 'Крем-Брюле Латте', category: 'author', price: 340, img: 'img/menu_creme_brulee_latte.png' },
+    { id: 8, title: 'Нью-Йорк Чизкейк', category: 'dessert', price: 350, img: 'img/menu_cheesecake.png' },
+    { id: 9, title: 'Шоколадный Фондан', category: 'dessert', price: 380, img: 'img/menu_fondant.png' },
+    { id: 10, title: 'Тирамису', category: 'dessert', price: 320, img: 'img/tiramisu.png' },
+    { id: 11, title: 'Сет Макарун', category: 'dessert', price: 1550, img: 'img/macarons.png' },
+    { id: 12, title: 'Круассан', category: 'dessert', price: 190, img: 'img/croissant.png' },
+    { id: 13, title: 'Брауни', category: 'dessert', price: 260, img: 'img/brownie.png' }
 ];
 
 // =====================================================
@@ -153,22 +188,19 @@ function getNestedTranslation(obj, path) {
     return path.split('.').reduce((acc, part) => acc && acc[part], obj);
 }
 
-function showToast(message, type = 'info') {
-    const container = document.getElementById('toast-container');
-    if (!container) return;
-    const toast = document.createElement('div');
-    toast.className = `toast ${type}`;
-    toast.innerHTML = `<i data-feather="check-circle"></i> ${message}`;
-    container.appendChild(toast);
-    feather.replace();
-    setTimeout(() => {
-        toast.style.animation = 'toastOut 0.4s ease forwards';
-        setTimeout(() => toast.remove(), 400);
-    }, 3000);
-}
-
 // =====================================================
 document.addEventListener('DOMContentLoaded', () => {
+
+    // --- 0.5. Прелоадер ---
+    const preloader = document.getElementById('preloader');
+    if (preloader) {
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                preloader.classList.add('hidden');
+                setTimeout(() => preloader.remove(), 600);
+            }, 1800);
+        });
+    }
 
     // --- 1. Навигация и Мобильное меню ---
     const navbar = document.querySelector('.navbar');
@@ -176,11 +208,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const mobileMenu = document.querySelector('.mobile-menu');
     const mobileLinks = document.querySelectorAll('.mobile-menu a');
 
-    window.addEventListener('scroll', () => {
-        navbar.classList.toggle('scrolled', window.scrollY > 50);
-    });
+    if (navbar) {
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 50);
+        });
+    }
 
-    mobileBtn.addEventListener('click', () => {
+    if (mobileBtn) mobileBtn.addEventListener('click', () => {
         mobileMenu.classList.toggle('active');
         const icon = mobileMenu.classList.contains('active') ? 'x' : 'menu';
         mobileBtn.innerHTML = `<i data-feather="${icon}"></i>`;
@@ -297,16 +331,77 @@ document.addEventListener('DOMContentLoaded', () => {
         startAutoSlide();
     }
 
-    // --- 4. Форма бронирования ---
+    // --- 4. Форма бронирования с валидацией ---
     const bookingForm = document.getElementById('booking-form');
     if (bookingForm) {
+        // Установить минимальную дату — сегодня
+        const dateInput = document.getElementById('booking-date');
+        if (dateInput) {
+            const today = new Date().toISOString().split('T')[0];
+            dateInput.setAttribute('min', today);
+            dateInput.value = today;
+        }
+
+        // Убирать ошибку при вводе
+        bookingForm.querySelectorAll('input, select').forEach(input => {
+            input.addEventListener('input', () => {
+                input.closest('.form-group').classList.remove('invalid');
+            });
+        });
+
         bookingForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            const successMsg = translations[currentLang].booking.success;
-            showToast(successMsg, 'success');
-            bookingForm.reset();
+            let isValid = true;
+
+            const nameInput = document.getElementById('name');
+            const phoneInput = document.getElementById('phone');
+
+            if (nameInput && nameInput.value.trim().length < 2) {
+                nameInput.closest('.form-group').classList.add('invalid');
+                isValid = false;
+            }
+
+            if (phoneInput && !/^[\d\s\+\-\(\)]{7,}$/.test(phoneInput.value.trim())) {
+                phoneInput.closest('.form-group').classList.add('invalid');
+                isValid = false;
+            }
+
+            if (!isValid) return;
+
+            // Показать анимацию успеха
+            const formSuccess = document.getElementById('form-success');
+            const submitBtn = bookingForm.querySelector('button[type="submit"]');
+            if (submitBtn) submitBtn.style.display = 'none';
+            if (formSuccess) {
+                formSuccess.classList.add('visible');
+                feather.replace();
+            }
+
+            setTimeout(() => {
+                bookingForm.reset();
+                if (dateInput) dateInput.value = new Date().toISOString().split('T')[0];
+                if (submitBtn) submitBtn.style.display = '';
+                if (formSuccess) formSuccess.classList.remove('visible');
+            }, 5000);
         });
     }
+
+    // --- 4.5. Подсветка активного пункта навигации ---
+    const sections = document.querySelectorAll('section[id], header[id]');
+    const navLinksAll = document.querySelectorAll('.nav-links a');
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.getAttribute('id');
+                navLinksAll.forEach(link => {
+                    link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+                });
+            }
+        });
+    }, { threshold: 0.3, rootMargin: '-80px 0px -50% 0px' });
+
+    sections.forEach(section => sectionObserver.observe(section));
 
     // --- 5. Анимации при скролле (Intersection Observer) ---
     const animateOnScroll = new IntersectionObserver((entries, observer) => {
@@ -344,9 +439,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         // Обновляем таймер текст
-        const langH = document.querySelector('#timer-h');
-        const offerHoursLabel = document.querySelector('.timer-block:nth-child(1) .timer-label');
-        // Просто перерисуем меню для обновления текста карточек
+        // Перерисуем меню для обновления текста карточек
         const activeFilter = document.querySelector('.filter-btn.active');
         renderMenu(activeFilter ? activeFilter.dataset.filter : 'all');
     }
@@ -354,7 +447,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (langSwitchBtn) {
         langSwitchBtn.addEventListener('click', () => {
             currentLang = currentLang === 'ru' ? 'en' : 'ru';
-            localStorage.setItem('siteLang', currentLang);
+            try { localStorage.setItem('siteLang', currentLang); } catch(e) {}
             applyTranslations();
         });
     }
@@ -454,31 +547,46 @@ document.addEventListener('DOMContentLoaded', () => {
     const cursorDot = document.getElementById('cursor-dot');
     const cursorRing = document.getElementById('cursor-ring');
 
-    if (cursorDot && cursorRing) {
+    if (cursorDot && cursorRing && window.matchMedia('(pointer: fine)').matches) {
+        document.body.style.cursor = 'none';
+        document.querySelectorAll('a, button').forEach(el => el.style.cursor = 'none');
         let mouseX = 0, mouseY = 0;
         let ringX = 0, ringY = 0;
+        let ringAnimating = false;
+
+        function animateRing() {
+            ringX += (mouseX - ringX) * 0.15;
+            ringY += (mouseY - ringY) * 0.15;
+            cursorRing.style.left = ringX + 'px';
+            cursorRing.style.top = ringY + 'px';
+            if (Math.abs(mouseX - ringX) > 0.5 || Math.abs(mouseY - ringY) > 0.5) {
+                requestAnimationFrame(animateRing);
+            } else {
+                ringAnimating = false;
+            }
+        }
 
         document.addEventListener('mousemove', (e) => {
             mouseX = e.clientX;
             mouseY = e.clientY;
             cursorDot.style.left = mouseX + 'px';
             cursorDot.style.top = mouseY + 'px';
+            if (!ringAnimating) {
+                ringAnimating = true;
+                requestAnimationFrame(animateRing);
+            }
         });
 
-        // Кольцо двигается с небольшой задержкой (инерция)
-        function animateRing() {
-            ringX += (mouseX - ringX) * 0.15;
-            ringY += (mouseY - ringY) * 0.15;
-            cursorRing.style.left = ringX + 'px';
-            cursorRing.style.top = ringY + 'px';
-            requestAnimationFrame(animateRing);
-        }
-        animateRing();
-
-        // Увеличиваем кольцо при наведении на интерактивные элементы
-        document.querySelectorAll('a, button, .menu-item img, .gallery-item img').forEach(el => {
-            el.addEventListener('mouseenter', () => cursorRing.classList.add('hover'));
-            el.addEventListener('mouseleave', () => cursorRing.classList.remove('hover'));
+        // Увеличиваем кольцо при наведении на интерактивные элементы (делегирование)
+        document.addEventListener('mouseover', (e) => {
+            if (e.target.closest('a, button, .menu-item img, .gallery-item img')) {
+                cursorRing.classList.add('hover');
+            }
+        });
+        document.addEventListener('mouseout', (e) => {
+            if (e.target.closest('a, button, .menu-item img, .gallery-item img')) {
+                cursorRing.classList.remove('hover');
+            }
         });
     }
 
